@@ -1,0 +1,7 @@
+# Python bytecode cache from the helper scripts in scripts/
+__pycache__/
+*.pyc
+
+# OS clutter
+.DS_Store
+Thumbs.db

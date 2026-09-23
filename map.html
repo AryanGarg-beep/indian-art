@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Art Map — Indian Art History</title>
+  <meta name="description" content="A Leaflet map of fifteen regional Indian art forms, colour-coded by category, with search and filtering.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet from CDN (needs an internet connection, as do the map tiles). -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">&#9679;</span>
+        <span>Indian Art History</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="map.html" aria-current="page">Art Map</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <div class="page-intro">
+        <p class="eyebrow">Assignment 2</p>
+        <h1>Interactive Art Map of India</h1>
+        <p>
+          Regional art in India is usually tied to a purpose and a place rather than to a
+          gallery wall. A Warli painting is made on the mud wall of a house for a wedding.
+          A phad is a cloth scroll that works as a portable temple, unrolled at night by a
+          travelling singer who lights each episode with a lamp. A pattachitra stands in
+          for the deities of Puri during the fortnight they are hidden from view.
+        </p>
+        <p>
+          Most of these traditions were carried by hereditary painter families and
+          sustained by temple or court patronage. Several outlived the demand that created
+          them: Cheriyal scrolls lost their audience to film and television, and Kalighat
+          painting was undercut by cheap printing, though its economy of line went on to
+          shape Jamini Roy. The fifteen forms mapped here run from Adivasi wall painting to
+          the miniature ateliers of the Mughal and Rajput courts, the temple painting of the
+          south and east, and the urban bazaar art of nineteenth-century Calcutta.
+        </p>
+        <p class="intro-hint">
+          Select a pin for the full entry. Filter with the legend, or search by art form,
+          state or artist.
+        </p>
+      </div>
+
+      <div class="map-layout">
+
+        <!-- ===== Sidebar: search + legend/filter ===== -->
+        <aside class="map-sidebar">
+          <h2>Find an art form</h2>
+
+          <div class="search-field">
+            <label class="sr-only" for="search">Search art forms by name, state or artist</label>
+            <input type="search" id="search" placeholder="Search name, state or artist&hellip;"
+                   autocomplete="off">
+          </div>
+
+          <h2>Categories</h2>
+          <!-- Legend doubles as the category filter: each row is a toggle.
+               js/map.js builds these from the CATEGORIES array. -->
+          <ul class="legend" id="legend"></ul>
+
+          <p class="result-note" id="result-note" role="status" aria-live="polite"></p>
+        </aside>
+
+        <!-- ===== The map itself ===== -->
+        <div id="map" role="region" aria-label="Map of Indian regional art forms"></div>
+
+      </div>
+    </div>
+
+    <!-- ===== Detail panel =====
+         Sits outside the map container, so a long entry is never clipped
+         by the map box the way a Leaflet popup would be. Slides in from
+         the right on desktop, up from the bottom on phones.
+         js/map.js fills it in and manages focus. -->
+    <aside class="detail-panel" id="detail-panel"
+           role="dialog" aria-modal="false" aria-labelledby="detail-name">
+      <button class="detail-close" id="detail-close" aria-label="Close details">&times;</button>
+      <img class="detail-image" id="detail-image" src="" alt="">
+      <div class="detail-body">
+        <span class="popup-cat" id="detail-cat"></span>
+        <h2 id="detail-name"></h2>
+        <p class="detail-region" id="detail-region"></p>
+        <dl>
+          <dt>Era</dt>       <dd id="detail-era"></dd>
+          <dt>Artists</dt>   <dd id="detail-artists"></dd>
+          <dt>Works</dt>     <dd id="detail-works"></dd>
+          <dt>Technique</dt> <dd id="detail-technique"></dd>
+        </dl>
+        <p class="detail-context" id="detail-context"></p>
+        <p class="credit-line" id="detail-credit"></p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      Map data &copy; OpenStreetMap contributors. Images from Wikimedia Commons,
+      public domain or Creative Commons licensed &mdash; full credits in <code>CREDITS.md</code>.
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="data/locations.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>

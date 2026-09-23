@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Timeline — Indian Art History</title>
+  <meta name="description" content="A horizontally scrollable timeline of fifteen landmark Indian artifacts, from the Bhimbetka rock shelters to Santiniketan.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">&#9679;</span>
+        <span>Indian Art History</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="timeline.html" aria-current="page">Timeline</a>
+        <a href="map.html">Art Map</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <div class="page-intro">
+        <p class="eyebrow">Assignment 1</p>
+        <h1>Interactive Timeline with Artifacts</h1>
+        <p>
+          Indian art has never run in a single line. It opens with ochre figures brushed
+          onto rock-shelter walls long before farming, passes to the bronze-casters of the
+          Indus cities and the mirror-polished stone of Ashoka's empire, then gathers into
+          the great religious traditions &mdash; the painted caves at Ajanta, the processional
+          bronzes of the Cholas, the manuscript workshops of the Mughal and Pahari courts.
+        </p>
+        <p>
+          Colonial rule introduced oil paint, the easel and the art school, and with them a
+          long argument about what modern Indian art ought to be. Raja Ravi Varma answered
+          with European technique applied to Indian subjects; the Bengal School answered by
+          rejecting that technique outright; Amrita Sher-Gil answered by refusing the
+          question and looking instead at Ajanta and at village women. The fifteen works
+          below are points along that argument.
+        </p>
+        <p class="intro-hint">
+          Scroll the timeline sideways. Use <kbd>&larr;</kbd> and <kbd>&rarr;</kbd> to move
+          between artifacts, <kbd>Enter</kbd> to open one, <kbd>Esc</kbd> to close it.
+        </p>
+      </div>
+
+      <!-- Era filter. Buttons are added by js/timeline.js from the ERAS array. -->
+      <div class="filter-bar" id="era-filter">
+        <span class="filter-label" id="filter-label">Filter by era</span>
+        <!-- buttons injected here -->
+      </div>
+    </div>
+
+    <!-- The scrolling rail. Nodes are injected by js/timeline.js. -->
+    <div class="timeline-scroll" id="timeline-scroll" tabindex="0"
+         role="region" aria-label="Artifact timeline, scrollable horizontally">
+      <div class="timeline-track" id="timeline-track"></div>
+    </div>
+
+    <div class="wrap">
+      <p class="result-note" id="result-note" role="status" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <!-- ===== Detail modal =====
+       Starts hidden. js/timeline.js fills it in and manages focus. -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true"
+         aria-labelledby="modal-title" id="modal">
+
+      <button class="modal-close" id="modal-close" aria-label="Close detail view">&times;</button>
+
+      <figure class="modal-figure">
+        <img id="modal-image" src="" alt="">
+      </figure>
+
+      <div class="modal-body">
+        <p class="modal-era" id="modal-era"></p>
+        <h2 id="modal-title"></h2>
+
+        <dl class="fact-list">
+          <dt>Date</dt>          <dd id="modal-date"></dd>
+          <dt>Region</dt>        <dd id="modal-region"></dd>
+          <dt>Medium</dt>        <dd id="modal-medium"></dd>
+          <dt>Artist/Patron</dt> <dd id="modal-attribution"></dd>
+        </dl>
+
+        <p id="modal-context"></p>
+
+        <div class="why-box">
+          <strong>Why it matters</strong>
+          <span id="modal-why"></span>
+        </div>
+
+        <p class="credit-line" id="modal-credit"></p>
+      </div>
+
+      <div class="modal-nav">
+        <button type="button" id="modal-prev">&lsaquo; Previous</button>
+        <button type="button" id="modal-next">Next &rsaquo;</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      All images from Wikimedia Commons, public domain or Creative Commons licensed.
+      Full credits in <code>CREDITS.md</code>.
+    </div>
+  </footer>
+
+  <!-- Data first, then the script that uses it. Plain <script> tags rather
+       than fetch() so the page also works when opened straight from disk. -->
+  <script src="data/artifacts.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>
