@@ -1,0 +1,209 @@
+/* ===================================================================
+   The Elephant Who Gave His Tusks — storyboard stylesheet
+   Colours are the Ajanta mineral pigments; the panels themselves keep
+   their painted colours in every theme, only the page around them shifts.
+   =================================================================== */
+
+:root {
+  --paper:      #f3ead6;   /* lime plaster */
+  --paper-2:    #fbf6ea;
+  --ink:        #2a1d14;
+  --ink-soft:   #5e4a3a;
+  --rule:       #d9c7a4;
+  --accent:     #9b3b26;   /* red earth */
+  --accent-2:   #2c4a7a;   /* lapis */
+  --gold:       #a87a1f;
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype",
+                  Palatino, Georgia, serif;
+  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                  Roboto, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:    #1d1612;
+    --paper-2:  #271e18;
+    --ink:      #f1e6d2;
+    --ink-soft: #c7b49b;
+    --rule:     #4a3a2e;
+    --accent:   #e08a6c;
+    --accent-2: #9db6e0;
+    --gold:     #d8b04a;
+  }
+}
+:root[data-theme="dark"] {
+  --paper:    #1d1612;
+  --paper-2:  #271e18;
+  --ink:      #f1e6d2;
+  --ink-soft: #c7b49b;
+  --rule:     #4a3a2e;
+  --accent:   #e08a6c;
+  --accent-2: #9db6e0;
+  --gold:     #d8b04a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.6 var(--font-body);
+}
+
+main { max-width: 1120px; margin: 0 auto; padding: 0 16px 64px; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; }
+h2 { font-size: 2rem; margin: 0 0 .25em; }
+h3 { font-size: 1.3rem; margin: 0 0 .4em; }
+
+.eyebrow {
+  font: 600 .75rem/1.4 var(--font-body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 .5em;
+}
+
+section { padding: 56px 0 0; }
+section > header { max-width: 68ch; margin-bottom: 24px; }
+section > header p { color: var(--ink-soft); margin: 0; }
+
+/* SVG text used inside the panels */
+.say { font-family: var(--font-display); font-weight: 600; fill: #2a1d14; }
+.lbl { font-family: var(--font-display); font-style: italic; fill: #3b2418; letter-spacing: .04em; }
+
+svg { display: block; width: 100%; height: auto; overflow: hidden; }
+
+/* ---------- cover ---------- */
+.cover {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding-top: 48px;
+}
+.cover h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin: 0 0 .2em; }
+.cover h1 em { display: block; font-size: .55em; font-style: italic; color: var(--accent); margin-top: .25em; }
+.cover .sub { font-size: 1.1rem; color: var(--ink-soft); margin: 0 0 1.5em; }
+.meta {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 18px;
+  font-size: .95rem;
+}
+.meta dt { color: var(--ink-soft); }
+.meta dd { margin: 0; font-weight: 600; }
+
+/* ---------- at a glance ---------- */
+.glance { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; }
+.card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 20px 22px;
+}
+.cast { list-style: none; padding: 0; margin: 0; }
+.cast li { padding: 8px 0; border-bottom: 1px dashed var(--rule); }
+.cast li:last-child { border-bottom: 0; }
+.cast b { font-family: var(--font-display); font-size: 1.15rem; }
+.seq { margin: 0; padding-left: 1.3em; }
+.seq li { margin: 4px 0; }
+.settings { margin: 0 0 16px; padding-left: 1.1em; }
+
+/* ---------- panels ---------- */
+.board { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 28px; }
+.panel { margin: 0; }
+.panel figcaption {
+  margin-top: 10px;
+  padding: 10px 14px 12px;
+  border-left: 4px solid var(--accent);
+  background: var(--paper-2);
+}
+.panel .num {
+  font: 600 .72rem/1 var(--font-body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.panel h3 { margin: 4px 0 4px; }
+.panel p { margin: 0; font-size: .95rem; }
+
+/* ---------- message ---------- */
+.message {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.message blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  line-height: 1.25;
+  margin: .2em 0 .6em;
+  color: var(--accent);
+}
+.message p { color: var(--ink-soft); max-width: 62ch; margin: 0 auto .8em; }
+
+/* ---------- significance ---------- */
+.note { display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; align-items: start; }
+.note p { margin: 0 0 1em; max-width: 68ch; }
+.plates { display: grid; gap: 18px; }
+.plates figure { margin: 0; }
+.plates img { width: 100%; height: auto; max-height: 420px; object-fit: cover; display: block; border-radius: 4px; }
+.plates figcaption { font-size: .82rem; color: var(--ink-soft); margin-top: 6px; }
+.palette { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+.swatch { font-size: .78rem; color: var(--ink-soft); }
+.swatch i {
+  display: block; height: 30px; border-radius: 3px; margin-bottom: 4px;
+  border: 1px solid var(--rule);
+}
+
+/* ---------- references ---------- */
+.refs { padding-left: 1.2em; max-width: 90ch; }
+.refs li { margin: 6px 0; }
+a { color: var(--accent-2); }
+
+footer { text-align: center; color: var(--ink-soft); font-size: .85rem; padding: 48px 16px 24px; }
+
+/* ---------- small screens ---------- */
+@media screen and (max-width: 760px) {
+  .cover, .glance, .board, .note { grid-template-columns: 1fr; }
+  .cover { gap: 20px; }
+  section { padding-top: 40px; }
+  .palette { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- print: A4 landscape, two panels per page ---------- */
+@page { size: A4 landscape; margin: 10mm 12mm; }
+
+@media print {
+  :root {
+    --paper: #fff; --paper-2: #f8f2e4; --ink: #2a1d14; --ink-soft: #5e4a3a;
+    --rule: #d9c7a4; --accent: #9b3b26; --accent-2: #2c4a7a;
+  }
+  body { font-size: 11pt; background: #fff; }
+  main { max-width: none; padding: 0; }
+  section { padding-top: 0; break-before: page; }
+  .cover { padding-top: 6mm; min-height: 180mm; }
+  .cover h1 { font-size: 34pt; }
+  /* one large panel per page */
+  .board { display: block; }
+  .panel { width: 226mm; margin: 0 auto; break-inside: avoid; break-after: page; }
+  .panel figcaption { margin-top: 4mm; }
+  .message { min-height: 180mm; display: flex; flex-direction: column; justify-content: center; }
+  /* the plaster texture is a filter Chrome rasterises: skip it to keep the PDF small */
+  svg rect[filter] { display: none; }
+  .panel p { font-size: 10pt; }
+  #panels > header { display: none; }
+  .note { gap: 8mm; }
+  .note p { font-size: 10pt; margin-bottom: .6em; }
+  .plates { grid-template-columns: 1fr 1fr; }
+  .plates img { max-height: 70mm; object-fit: cover; }
+  footer { display: none; }
+  a { color: inherit; text-decoration: none; }
+}

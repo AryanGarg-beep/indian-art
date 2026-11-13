@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Indian Art History — Interactive Timeline &amp; Art Map</title>
+  <meta name="description" content="Two interactive tools for studying Indian art history: a timeline of artifacts from prehistory to the present, and a map of India's regional art forms.">
+
+  <!-- Google Fonts. The CSS declares full fallback stacks, so the pages
+       still look correct if these fail to load (e.g. offline). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== Shared header (same markup on all three pages) ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">&#9679;</span>
+        <span>Indian Art History</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="map.html">Art Map</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">College assignment &middot; Art History</p>
+        <h1>Five thousand years of Indian art,<br>in two interactive views.</h1>
+        <p>
+          This site presents Indian art history through two tools. The
+          <strong>timeline</strong> follows fifteen landmark artifacts from the prehistoric
+          rock shelters of Bhimbetka to the frescoes of Santiniketan. The
+          <strong>art map</strong> places fifteen living regional traditions on the map of
+          India, from Warli in Maharashtra to Pattachitra in Odisha.
+        </p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="card-grid">
+
+        <article class="card">
+          <p class="card-tag">Assignment 1</p>
+          <h2>Interactive Timeline</h2>
+          <p>
+            Fifteen artifacts arranged across eleven era bands, from the Prehistoric
+            period to the Contemporary. Scroll the timeline sideways, filter by era,
+            and open any artifact for its full historical context. Use the arrow keys
+            to move between pieces.
+          </p>
+          <p><a class="btn-primary" href="timeline.html">Open the timeline</a></p>
+        </article>
+
+        <article class="card">
+          <p class="card-tag">Assignment 2</p>
+          <h2>Interactive Art Map</h2>
+          <p>
+            Fifteen regional art forms pinned across India and colour-coded by category:
+            folk and tribal, court and miniature, temple and devotional, and modern.
+            Filter by category or search by name, state or artist.
+          </p>
+          <p><a class="btn-primary" href="map.html">Open the map</a></p>
+        </article>
+
+      </div>
+
+      <section style="padding: 0 0 2.5rem; max-width: 68ch;">
+        <h2>About the sources</h2>
+        <p>
+          Every image on this site comes from Wikimedia Commons and is either in the
+          public domain or released under a Creative Commons licence. Each one is
+          credited on the page where it appears, and all thirty are listed with their
+          author, licence and source URL in <code>CREDITS.md</code>.
+        </p>
+        <p>
+          Where a date or an attribution is genuinely disputed by historians &mdash; the
+          Didarganj Yakshi is the clearest case &mdash; the site says so rather than
+          picking one answer. Those points are collected under
+          &ldquo;Verify before submitting&rdquo; in <code>README.md</code>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      Built as a static site &mdash; plain HTML, CSS and vanilla JavaScript, no build step.
+      Map tiles &copy; OpenStreetMap contributors. Images via Wikimedia Commons.
+    </div>
+  </footer>
+</body>
+</html>
