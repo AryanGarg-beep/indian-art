@@ -3,39 +3,400 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aryan Garg Assignments</title>
+<title>Aryan Garg Portfolio</title>
+<meta name="description" content="A portfolio of work for Indian Art Forms: an interactive timeline and map, a hand-drawn Kalamkari–Warli painting, an Ajanta storyboard, a Mahabalipuram sculpture analysis, a Kolam & Rangoli poster and a field visit report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #faf6ef; --ink: #241f1b; --soft: #5c534a; --rule: #e0d6c6; --link: #8a341f; }
+  :root {
+    --bg: #f8f3ea; --paper: #fffdf8; --ink: #231d18; --soft: #5f554b; --faint: #8a7e71;
+    --rule: #e3d8c7; --accent: #a8432a; --accent-ink: #fff; --tint: #f1e6d6;
+    --shadow: 0 1px 2px rgba(60,40,20,.08), 0 10px 30px -12px rgba(60,40,20,.28);
+    --serif: "Cormorant Garamond", Georgia, "Palatino Linotype", Palatino, serif;
+    --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --bg: #1b1714; --ink: #f0e8dc; --soft: #bfb3a4; --rule: #3d342c; --link: #e8957a; }
+    :root:not([data-theme="light"]) {
+      --bg: #1a1613; --paper: #241f1a; --ink: #f1e9dd; --soft: #c2b6a7; --faint: #978a7b;
+      --rule: #3b322a; --accent: #e58b6c; --accent-ink: #1a1613; --tint: #2b241e;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.7);
+    }
   }
-  :root[data-theme="dark"] { --bg: #1b1714; --ink: #f0e8dc; --soft: #bfb3a4; --rule: #3d342c; --link: #e8957a; }
+  :root[data-theme="dark"] {
+    --bg: #1a1613; --paper: #241f1a; --ink: #f1e9dd; --soft: #c2b6a7; --faint: #978a7b;
+    --rule: #3b322a; --accent: #e58b6c; --accent-ink: #1a1613; --tint: #2b241e;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.7);
+  }
+
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
   body {
-    margin: 0; min-height: 100vh; display: grid; place-items: center;
-    background: var(--bg); color: var(--ink);
-    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    padding: 32px 16px;
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
   }
-  main { width: 100%; max-width: 520px; }
-  h1 { font: 600 1.9rem/1.2 Georgia, "Times New Roman", serif; margin: 0; }
-  p { margin: 4px 0 28px; color: var(--soft); }
-  ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-  li { border-bottom: 1px solid var(--rule); }
-  a { display: block; padding: 14px 2px; color: var(--link); text-decoration: none; font-weight: 600; }
-  a:hover, a:focus-visible { text-decoration: underline; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 12px; background: var(--paper); padding: 8px 12px; z-index: 10; }
+
+  /* Hero */
+  .hero { padding: 56px 0 40px; }
+  @media (min-width: 720px) { .hero { padding: 88px 0 56px; } }
+  .eyebrow { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin: 0 0 14px; }
+  h1 { font: 600 clamp(2.3rem, 6vw, 4rem)/1.05 var(--serif); margin: 0; max-width: 21ch; letter-spacing: -.01em; }
+  h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .lede { font-size: 1.1rem; color: var(--soft); max-width: 60ch; margin: 22px 0 0; }
+  .id { display: flex; flex-wrap: wrap; gap: 10px 36px; margin: 32px 0 0; padding: 18px 0 0; border-top: 1px solid var(--rule); }
+  .id div { min-width: 0; }
+  .id dt { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+  .id dd { margin: 2px 0 0; font-weight: 600; }
+
+  /* Work list */
+  section.work { padding: 16px 0 24px; }
+  h2.section { font: 600 1.9rem/1.2 var(--serif); margin: 0 0 8px; }
+  .section-note { color: var(--soft); margin: 0 0 8px; }
+  .project {
+    display: grid; gap: 28px; padding: 44px 0; border-top: 1px solid var(--rule);
+  }
+  .project:first-of-type { border-top: 0; }
+  @media (min-width: 860px) {
+    .project { grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; padding: 64px 0; }
+    .project.flip .figure { order: 2; }
+  }
+  .num { font: 500 .85rem/1 var(--sans); color: var(--faint); letter-spacing: .08em; }
+  .project h3 { font: 600 clamp(1.6rem, 3.4vw, 2.2rem)/1.15 var(--serif); margin: 8px 0 4px; }
+  .project .sub { font: italic 500 1.15rem/1.4 var(--serif); color: var(--accent); margin: 0 0 14px; }
+  .project p { color: var(--soft); margin: 0 0 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
+  .tags li { font-size: .75rem; font-weight: 500; padding: 3px 10px; border-radius: 99px; background: var(--tint); color: var(--soft); }
+  ul.points { margin: 0 0 20px; padding: 0; list-style: none; }
+  ul.points li { position: relative; padding-left: 18px; margin: 6px 0; color: var(--ink); font-size: .95rem; }
+  ul.points li::before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid var(--accent); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 6px;
+    font-size: .9rem; font-weight: 600; text-decoration: none; border: 1px solid var(--accent);
+  }
+  .btn.solid { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { color: var(--accent); background: transparent; }
+  .btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .btn { transition: transform .15s ease, filter .15s ease; }
+
+  /* Figures */
+  .figure { position: relative; min-width: 0; }
+  .figure a { display: block; text-decoration: none; }
+  .browser { background: var(--paper); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--rule); }
+  .browser .bar { height: 22px; display: flex; gap: 5px; align-items: center; padding: 0 10px; background: var(--tint); border-bottom: 1px solid var(--rule); }
+  .browser .bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--rule); }
+  .browser .bar span { margin-left: 8px; font-size: .65rem; color: var(--faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stack { display: grid; gap: 14px; }
+  .stack .browser:last-child { width: 80%; margin-left: auto; margin-top: -6px; position: relative; }
+  .page { background: #fff; box-shadow: var(--shadow); border-radius: 2px; }
+  .pages { position: relative; height: 0; padding-bottom: 92%; }
+  .pages .page { position: absolute; width: 56%; top: 0; }
+  .pages .page:first-child { left: 4%; transform: rotate(-3deg); z-index: 2; top: 3%; }
+  .pages .page:last-child { right: 4%; transform: rotate(2.5deg); }
+  .poster-wrap { display: flex; justify-content: center; padding: 8px 0; }
+  .poster-wrap .page { width: min(68%, 330px); }
+  .figure a:hover .browser, .figure a:hover .page { transform: translateY(-3px); }
+  .browser, .page { transition: transform .25s ease; }
+  .pages .page:first-child, .pages .page:last-child { transition: none; }
+  .facts { display: grid; gap: 6px; margin: 0 0 18px; padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .facts div { display: grid; grid-template-columns: 76px 1fr; gap: 12px; }
+  .facts dt { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); padding-top: 3px; }
+  .facts dd { margin: 0; font-size: .92rem; }
+  .facts-h { font-size: .72rem !important; letter-spacing: .1em; text-transform: uppercase; color: var(--accent) !important; font-weight: 600; margin: 0 0 4px !important; }
+  .geotag { margin: 0 0 20px; }
+  .geotag img { width: min(100%, 300px); border-radius: 6px; box-shadow: var(--shadow); }
+  .geotag figcaption { margin-top: 10px; line-height: 1.5; }
+  .geotag figcaption b { color: var(--soft); font-weight: 600; display: block; }
+  .geotag-side { margin: 12px 0 0; display: flex; gap: 16px; align-items: flex-end; }
+  .geotag-side > a { flex: 0 0 180px; }
+  .geotag-side img { width: 180px; }
+  .geotag-side figcaption { margin: 0; flex: 1 1 auto; min-width: 0; }
+  figcaption { font-size: .78rem; color: var(--faint); margin-top: 12px; }
+
+  /* Deployment */
+  section.deploy { padding: 48px 0 64px; border-top: 1px solid var(--rule); }
+  .deploy-link { font: 600 clamp(1.1rem, 3vw, 1.5rem)/1.3 var(--serif); color: var(--accent); overflow-wrap: anywhere; }
+
+  footer { border-top: 1px solid var(--rule); padding: 24px 0 40px; color: var(--faint); font-size: .82rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+  @media print {
+    @page { size: A4; margin: 12mm 14mm; }
+    :root { --bg: #fff; --paper: #fff; --tint: #f3ece1; }
+    html { font-size: 12px; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .skip, .actions { display: none; }
+    .wrap { padding: 0; max-width: none; }
+    .hero { padding: 18px 0 6px; }
+    h1 { font-size: 2.6rem; max-width: none; }
+    .lede { font-size: 1rem; margin-top: 10px; }
+    .id { margin-top: 14px; padding-top: 10px; }
+    section.work { padding: 6px 0 0; }
+    h2.section { font-size: 1.6rem; }
+    .project { grid-template-columns: 1fr 1.1fr; gap: 24px; padding: 18px 0; align-items: center; break-inside: avoid; }
+    .project.flip .figure { order: 2; }
+    .project h3 { font-size: 1.6rem; margin-top: 4px; }
+    .project p, ul.points li { font-size: .95rem; }
+    ul.points { margin-bottom: 0; }
+    .poster-wrap .page { width: 52%; }
+    .geotag img, .geotag-side img { width: 110px; }
+    .geotag-side > a { flex-basis: 110px; }
+    .pages { padding-bottom: 80%; }
+    .geotag { margin-bottom: 0; }
+    section.deploy { padding: 18px 0 0; break-inside: avoid; }
+    .browser, .page { box-shadow: none; }
+    .page { border: 1px solid var(--rule); }
+    footer { padding: 14px 0 0; }
+    a { text-decoration: none; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <h1>Aryan Garg</h1>
-  <p>RA2411003011414</p>
-  <ul>
-    <li><a href="assignment-1-and-2/">Assignment 1 &amp; 2: Indian Art Timeline &amp; Map</a></li>
-    <li><a href="assignment-3-ajanta-storyboard/">Assignment 3: Ajanta Cave Paintings Storyboard</a></li>
-    <li><a href="assignment-4-mahabalipuram-analysis/">Assignment 4: Mahabalipuram Sculpture Analysis</a></li>
-    <li><a href="assignment-5-kolam-rangoli-poster/">Assignment 5: Kolam &amp; Rangoli Poster</a></li>
-  </ul>
+<a class="skip" href="#work">Skip to the work</a>
+
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio &middot; Indian Art Forms</p>
+      <h1>Five thousand years of Indian art, <em>made into things you can use.</em></h1>
+      <p class="lede">
+        Work on Indian art and heritage: an interactive timeline and map, a hand-drawn
+        Kalamkari–Warli painting, a storyboard of an Ajanta mural, an analysis of the rock-cut sculpture at
+        Mahabalipuram, a poster on the floor art of Kolam and Rangoli, and a field visit to
+        Sri Yoga Hayagrivar Perumal Temple.
+      </p>
+      <dl class="id">
+        <div><dt>Name</dt><dd>Aryan Garg</dd></div>
+        <div><dt>Register no.</dt><dd>RA2411003011414</dd></div>
+        <div><dt>Course</dt><dd>Indian Art Forms [21LEM301T]</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 class="section" id="work-h">Selected work</h2>
+
+      <!-- 01 -->
+      <article class="project">
+        <div class="figure">
+          <a href="assignment-1-and-2/timeline.html" aria-label="Open the interactive timeline">
+            <div class="stack">
+              <div class="browser">
+                <div class="bar"><i></i><i></i><i></i><span>timeline.html</span></div>
+                <img src="assets/timeline.jpg" alt="The timeline rail: circular images of the Bhimbetka paintings, Dancing Girl, Pashupati seal, Lion Capital and Didarganj Yakshi grouped under era bands.">
+              </div>
+              <div class="browser">
+                <div class="bar"><i></i><i></i><i></i><span>map.html</span></div>
+                <img src="assets/map.jpg" alt="A map of India with fifteen coloured pins marking regional art forms.">
+              </div>
+            </div>
+          </a>
+        </div>
+        <div>
+          <span class="num">01 &middot; ASSIGNMENTS 1 &amp; 2</span>
+          <h3>Indian Art Timeline &amp; Art Map</h3>
+          <p class="sub">From Bhimbetka to Santiniketan, and from Warli to Pattachitra</p>
+          <ul class="tags"><li>Interactive website</li><li>HTML, CSS, JavaScript</li><li>Leaflet</li></ul>
+          <p>
+            Two linked tools. The timeline places fifteen landmark artifacts across eleven
+            eras; the map pins fifteen living regional traditions to the places that made them.
+          </p>
+          <ul class="points">
+            <li>Era filter, arrow-key navigation and a detail view for every artifact</li>
+            <li>Map legend doubles as a category filter, with search by name, state or artist</li>
+            <li>Disputed dates, like the Didarganj Yakshi, are shown as disputed</li>
+          </ul>
+          <div class="actions">
+            <a class="btn solid" href="assignment-1-and-2/timeline.html">Open timeline</a>
+            <a class="btn ghost" href="assignment-1-and-2/map.html">Open map</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="project flip">
+        <div class="figure">
+          <a href="assets/warli.jpg" aria-label="View the painting at full size">
+            <img class="page" src="assets/warli.jpg" alt="A hand-drawn fusion of Kalamkari and Warli on a saffron-yellow ground: a flowering tree of life rises from rounded hills, with triangle-bodied dancers and two drummers at its foot, framed by borders of blue and red flowers.">
+          </a>
+        </div>
+        <div>
+          <span class="num">02 &middot; ASSIGNMENT 1</span>
+          <h3>Tree of Life</h3>
+          <p class="sub">A fusion of Kalamkari and Warli</p>
+          <p>
+            Hand-drawn by me, bringing together the flowing, flower-filled line work of
+            Kalamkari and the stick-and-triangle figures of Warli. A flowering tree rises from
+            rounded hills while villagers dance and drum around its roots.
+          </p>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="project">
+        <div class="figure">
+          <a href="assignment-3-ajanta-storyboard/" aria-label="Open the Ajanta storyboard">
+            <img class="page" src="assets/storyboard.jpg" alt="Storyboard panel 1, The Elephant King: a white six-tusked elephant stands by a lotus lake in the Himalaya, surrounded by his herd.">
+          </a>
+          <figcaption>Panel 1 of 8, &ldquo;The Elephant King&rdquo;</figcaption>
+        </div>
+        <div>
+          <span class="num">03 &middot; SUB-ASSIGNMENT 1 &middot; CO2</span>
+          <h3>The Elephant Who Gave His Tusks</h3>
+          <p class="sub">A storyboard of the Chhaddanta Jataka, Ajanta Cave 17</p>
+          <ul class="tags"><li>Storyboard</li><li>13-page A4 PDF</li><li>Illustrated in SVG</li></ul>
+          <p>
+            The Bodhisattva, born as a six-tusked white elephant, gives up his tusks to the
+            queen who wished him dead. The story is retold in eight illustrated panels and
+            set beside photographs of the original mural.
+          </p>
+          <ul class="points">
+            <li>Characters, setting and sequence of events laid out before the panels</li>
+            <li>Every illustration drawn in code as SVG, with the real Cave 17 mural photographed alongside</li>
+            <li>Closes with a historical note on why the story matters at Ajanta</li>
+          </ul>
+          <div class="actions">
+            <a class="btn solid" href="assignment-3-ajanta-storyboard/">View storyboard</a>
+            <a class="btn ghost" href="assignment-3-ajanta-storyboard/storyboard.pdf">PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="project flip">
+        <div class="figure">
+          <a href="assignment-4-mahabalipuram-analysis/" aria-label="Open the Mahabalipuram report">
+            <div class="pages">
+              <img class="page" src="assets/report-1.jpg" alt="Report page 1: title, introduction and a photograph of Arjuna's Penance.">
+              <img class="page" src="assets/report-2.jpg" alt="Report page 2: a zone diagram of the relief and notes on its iconography.">
+            </div>
+          </a>
+        </div>
+        <div>
+          <span class="num">04 &middot; SUB-ASSIGNMENT 2 &middot; CO2</span>
+          <h3>Carving the Cosmos</h3>
+          <p class="sub">Arjuna&rsquo;s Penance and the Pancha Rathas of Mahabalipuram</p>
+          <ul class="tags"><li>Thematic analysis</li><li>7-page report</li><li>6 figures</li></ul>
+          <p>
+            Two 7th-century Pallava works: a cliff face turned into a crowded universe, and
+            five boulders turned into a catalogue of temple forms. Together they show how to
+            tell a sacred story in stone, and how to give a god a house.
+          </p>
+          <ul class="points">
+            <li>Zone diagram of the relief and a comparison of the five ratha types</li>
+            <li>Weighs the Arjuna and Bhagiratha readings of the relief</li>
+            <li>Page-numbered A4 layout with references and image credits</li>
+          </ul>
+          <div class="actions">
+            <a class="btn solid" href="assignment-4-mahabalipuram-analysis/">Read report</a>
+            <a class="btn ghost" href="assignment-4-mahabalipuram-analysis/report.pdf">PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 -->
+      <article class="project">
+        <div class="figure">
+          <a href="assignment-5-kolam-rangoli-poster/" aria-label="Open the Kolam and Rangoli poster">
+            <div class="poster-wrap">
+              <img class="page" src="assets/poster.jpg" alt="The Kolam and Rangoli poster: a dark header with the title, then pattern tiles, photographs and a closing message.">
+            </div>
+          </a>
+        </div>
+        <div>
+          <span class="num">05 &middot; SUB-ASSIGNMENT 3 &middot; CO4</span>
+          <h3>Kolam &amp; Rangoli</h3>
+          <p class="sub">&ldquo;Draw the threshold, welcome the world.&rdquo;</p>
+          <ul class="tags"><li>Poster</li><li>A3 portrait</li><li>Generated patterns</li></ul>
+          <p>
+            An informative poster on the floor art drawn at India&rsquo;s doorsteps each
+            morning: what it is called across eight regions, why it is drawn, and how to
+            keep the practice alive.
+          </p>
+          <ul class="points">
+            <li>Six labelled pattern tiles, from pulli kolam to a Diwali rangoli</li>
+            <li>Sikku kolams generated by the mirror-curve rule and checked to be one unbroken line</li>
+            <li>A &ldquo;Did you know?&rdquo; panel on kolam and mathematics</li>
+          </ul>
+          <div class="actions">
+            <a class="btn solid" href="assignment-5-kolam-rangoli-poster/">View poster</a>
+            <a class="btn ghost" href="assignment-5-kolam-rangoli-poster/poster.pdf">PDF</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 -->
+      <article class="project flip">
+        <div class="figure">
+          <a href="field-visit-report/field_report.pdf" aria-label="Open the field visit report">
+            <div class="pages">
+              <img class="page" src="assets/field-1.jpg" alt="Field visit report cover: SRM Institute of Science and Technology, 21LEM301T Indian Art Form, with name and register number.">
+              <img class="page" src="assets/field-7.jpg" alt="Report photo page: photographs taken at the temple, including the gopuram and the visiting students.">
+            </div>
+          </a>
+            <figure class="geotag geotag-side">
+              <a href="assets/field-geotag.jpg" aria-label="View the geotagged photo at full size">
+                <img src="assets/field-geotag.jpg" alt="The temple's painted gopuram and granite outer wall, with a GPS Map Camera geotag reading Chettippunniyam Village, Chengalpattu, Tamil Nadu, Lat 12.751295, Long 79.975947, Saturday 14/11/2026, 10:40 AM.">
+              </a>
+              <figcaption>
+                <b>Geotagged on site</b> Chettippunniyam Village, Chengalpattu, Tamil Nadu<br>
+                <a href="https://www.google.com/maps?q=12.751295,79.975947">12.7513&deg; N, 79.9759&deg; E</a> &middot; Sat 14 Nov 2026, 10:40 AM
+              </figcaption>
+            </figure>
+        </div>
+        <div>
+          <span class="num">06 &middot; FIELD VISIT</span>
+          <h3>Field Visit Report</h3>
+          <p class="sub">Sri Yoga Hayagrivar Perumal Temple</p>
+          <ul class="tags"><li>Field report</li><li>8 pages</li><li>Temple architecture</li></ul>
+          <p>
+            A visit to Sri Yoga Hayagrivar Perumal Temple to study temple art and architecture
+            first-hand, bridging classroom learning with direct observation. The temple&rsquo;s
+            painted stucco gopuram rises above granite outer walls topped by a brightly coloured
+            cornice.
+          </p>
+          <dl class="facts">
+            <div><dt>Visited</dt><dd>14 Nov 2026</dd></div>
+            <div><dt>Location</dt><dd>Chettippunniyam, Chengalpattu, Tamil Nadu</dd></div>
+            <div><dt>Report</dt><dd>Introduction, observations, learning outcomes, conclusion, photos, references</dd></div>
+          </dl>
+          <p class="facts-h">What the visit taught</p>
+          <ul class="points">
+            <li>Temples worked as centres for art, learning and community life, not only worship</li>
+            <li>How to read the visual and symbolic language of temple carving and architecture</li>
+            <li>Why conserving heritage sites keeps these traditions alive</li>
+          </ul>
+          <div class="actions">
+            <a class="btn solid" href="field-visit-report/field_report.pdf">Read report</a>
+            <a class="btn ghost" href="field-visit-report/field_report.docx">Word file</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="deploy" id="deploy" aria-labelledby="deploy-h">
+    <div class="wrap">
+      <h2 class="section" id="deploy-h">Live site</h2>
+      <p><a class="deploy-link" href="https://aryangarg-beep.github.io/indian-art/">aryangarg-beep.github.io/indian-art</a></p>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>Aryan Garg &middot; RA2411003011414 &middot; Indian Art Forms [21LEM301T]</span>
+  </div>
+</footer>
 </body>
 </html>
